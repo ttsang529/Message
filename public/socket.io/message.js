@@ -19,7 +19,7 @@ redis.on('message', function(channel, notification) {
   console.log(notification);
   notification = JSON.parse(notification);
 
-  io.emit('notification',  notification.data.message);
+  io.emit('notification',  notification.data);
 });
 
 http.listen(3000, function() {

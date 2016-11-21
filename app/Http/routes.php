@@ -19,3 +19,6 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::post('/sendmessage', 'ChatController@sendMessage');
+Route::get('/connect', function(){
+   return view('CheckConnect');
+});

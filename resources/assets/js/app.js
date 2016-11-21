@@ -10,6 +10,7 @@ notification.on('connect', function() {
   notification.emit('set-token', "hello world");
 });
 
-notification.on('notification', function(message) {
-  console.log(message);
+notification.on('notification', function(data) {
+  $( "#messages" ).append( "<p><strong>"+data.name+":</strong>"+data.message+"</p>" );
+  console.log(data.name+"   "+data.message);
 });

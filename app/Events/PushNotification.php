@@ -19,8 +19,8 @@ class PushNotification extends Event implements ShouldBroadcast
     /**
      * @var string
      */
+    public $name;
     public $message;
-
 
     /**
      * Create a new event instance.
@@ -31,6 +31,7 @@ class PushNotification extends Event implements ShouldBroadcast
     public function __construct(User $user, $message)
     {
         $this->token = sha1($user->id . '|' . $user->email);
+        $this->name = $user->name;
         $this->message = $message;
     }
 
