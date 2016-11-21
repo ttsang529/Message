@@ -2,11 +2,10 @@
 
 namespace App\Events;
 
-use App\User;
 use App\Events\Event;
+use App\User;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use Illuminate\Support\Facades\Log;
 
 class PushNotification extends Event implements ShouldBroadcast
 {
@@ -16,15 +15,18 @@ class PushNotification extends Event implements ShouldBroadcast
      * @var string
      */
     public $token;
+
     /**
      * @var string
      */
     public $message;
 
+
     /**
      * Create a new event instance.
      *
-     * @return void
+     * @param User $user
+     * @param      $message
      */
     public function __construct(User $user, $message)
     {
@@ -32,14 +34,14 @@ class PushNotification extends Event implements ShouldBroadcast
         $this->message = $message;
     }
 
+
     /**
      * Get the channels the event should be broadcast on.
      *
      * @return array
      */
     public function broadcastOn()
-    {   
-        Log::info('Showing broadcastOn notification');
+    {
         return ['notification'];
     }
 }
